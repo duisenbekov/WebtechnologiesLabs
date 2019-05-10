@@ -1,0 +1,63 @@
+<style>
+    td a{
+    color:white;
+  }
+</style>
+<nav class="navbar navbar-dark bg-success"> 
+    <a routerLink="/" class="navbar-brand ml-auto"> <img class="mb-5" src="https://instagram.fala3-1.fna.fbcdn.net/vp/f3cedffe186436cdcca20274f588b7a4/5D643344/t51.2885-15/sh0.08/e35/p640x640/41152748_1740024112761890_1381479795581255680_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net" alt="" width="140" height="140">
+      Nurbek [Lab11-12-13] ToDo-List</a> 
+    <ul class="navbar-nav mr-auto">
+         
+      </ul> 
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a routerLink="/task_lists" class="nav-link">Task Lists</a> 
+        </li>
+        <li class="nav-item">
+          <a routerLink="/tasks/" class="nav-link">Tasks</a> 
+        </li>
+        <ul class="navbar-nav mr-auto pull-right">
+          <li class="nav-item" *ngIf="!auth.isAuthenticated()">
+            <a routerLink="/login" class="nav-link">Log In</a> 
+          </li>
+          <li class="nav-item" *ngIf="auth.isAuthenticated()">
+            <a class="nav-link" (click)="logout()">Log Out</a> 
+          </li>
+          <li class="nav-item" *ngIf="!auth.isAuthenticated()">
+            <a routerLink="/register" class="nav-link">Register</a> 
+          </li>
+        </ul>
+    </ul>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
+        <a routerLink="/task_lists" class="nav-link">Task Lists</a> 
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto pull-right">
+      <li class="nav-item" *ngIf="!auth.isAuthenticated()">
+        <a routerLink="/login" class="nav-link">Log In</a> 
+      </li>
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
+        <a class="nav-link" (click)="logout()">Log Out</a> 
+      </li>
+      <li class="nav-item" *ngIf="!auth.isAuthenticated()">
+        <a routerLink="/register" class="nav-link">Register</a> 
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+
+
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+          <div class="container col-md-6">
+          <ng-content *ngIf="auth.isAuthenticated()" select="[body]"></ng-content>
+          <ng-content *ngIf="!auth.isAuthenticated()" select="[authforms]"></ng-content>
+          </div>
+      
+  </div>
+</div>
