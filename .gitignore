@@ -3,6 +3,7 @@
 node_modules/
 venv/
 /venv
+/venv/bin
 .DS_Store
 
 npm-debug.log*
